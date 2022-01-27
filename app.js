@@ -1,38 +1,39 @@
-class Person {
-    //creates instance of Person with properties name, age, and numBooksRead
-    constructor(name, age, numBooksRead) {
-        this.name = name;
-        this.age = age;
-        this.numBooksRead = numBooksRead;
+class Dog {
+    //creates instance of  with Dog name, age, and Breed
+    constructor(name, age, breed) {
+        this._name = name;
+        this._age = age;
+        this._breed = breed;
     }
 
-    //increments numBooksRead by 1
-    readNewBook() {
-        this.numBooksRead++;
-    }
-}
-
-class Electrician extends Person {
-    //creates instance of Electrician with Person properites plus certifications, an array of strings
-    constructor(name, age, numBooksRead, certifications) {
-        super(name, age, numBooksRead);
-        this.certifications = certifications;
+    //
+    calculateDogAge() {
+       let dogYears = 7 * this._age;
+      return dogYears;
     }
 }
 
-class Teenager extends Person {
-    //creates instance of Teenager with Person properties plus isHungry, a boolean value
-    constructor(name, age, numBooksRead, isHungry = true) {
-        super(name, age, numBooksRead);
-        this.isHungry = isHungry;
+class DogOne extends Dog {
+    //creates instance of DogOne with Dog properites plus an extra property color
+    constructor(name, age, breed, color) {
+        super(name, age, breed);
+        this._color = color;
+    }
+}
+
+class DogTwo  extends Dog {
+    //creates instance of DogTwo with Dog properties plus isHungry, a boolean value
+    constructor(name, age, breed, isHungry = true) {
+        super(name, age, breed);
+        this._isHungry = isHungry;
     }
 
-    //feeds the teenager.  If they are hungry, changes isHungry to false, if they are not hungry, prints message to console.
+    //feeds the DogTwo.  If he is hungry, changes isHungry to false, if he is not hungry, prints message to console.
     eat() {
-        if(this.isHungry) {
-            this.isHungry = false;
+        if(this._isHungry) {
+            this._isHungry = false;
         } else {
-            console.log('Oh no I think I ate too much')
+            console.log('I am not hungry!')
         }
     }
 }
@@ -40,30 +41,31 @@ class Teenager extends Person {
 //below we will test our classes by instantiating them, calling each method, and verifying output
 
 //create instances of each class
-let person = new Person('Euthyphro', 35, 0);
-let electrician = new Electrician('Zeus', 28, 3, ['Lightning', 'Polymorphism']);
-let teen = new Teenager('Persius', 16, 5, true);
+let dog = new Dog('Milo', 35, 'Pug');
+let dog1 = new DogOne('Luna', 28, 'Poodle', 'Black');
+let dog2 = new DogTwo('Daisy', 16, 'Bulldog', true);
+
 
 //log each instance
-console.log(person);
-console.log(electrician);
-console.log(teen);
+console.log(dog);
+console.log(dog1);
+console.log(dog2);
 
 //call the method from the parent class to ensure it works as expected
-person.readNewBook();
-electrician.readNewBook();
-teen.readNewBook();
+console.log(`The human year of  ${dog._name} is: ${dog.calculateDogAge()}`);
+console.log(`The human year of  ${dog1._name} is: ${dog1.calculateDogAge()}`);
+console.log(`The human year of  ${dog2._name} is: ${dog2.calculateDogAge()}`);
 
-//log the objects after calling .readNewBook() to verify it worked as intended
-console.log(person);
-console.log(electrician);
-console.log(teen);
+//log the objects after calling .calculateDogAge() to verify it worked as intended
+console.log(dog);
+console.log(dog1);
+console.log(dog2);
 
 //call .eat()
-teen.eat();
+dog2.eat();
 
 //check that .eat() when isHungry == true works as expected
-console.log(teen);
+console.log(dog2);
 
 //check that .eat() when isHungry == false works as expected
-teen.eat();
+dog2.eat();
