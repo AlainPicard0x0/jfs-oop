@@ -67,3 +67,84 @@ console.log(teen);
 
 //check that .eat() when isHungry == false works as expected
 teen.eat();
+
+
+
+
+
+
+
+
+//Starting mine under this line.
+
+class Car {
+    constructor(name, year, color) { 
+        this.name = name;
+        this.year = year;
+        this.color = color;
+    }
+    newColor() { 
+        this.color++;
+    }
+}
+
+class Type extends Car {
+    constructor(name, year, color, type) { 
+        super(name, year, color);
+        this.type = type;
+    }
+}
+
+class Fuel extends Car { 
+    constructor(name, year, color, isGasoline = true) { 
+        super (name, year, color);
+        this.isPropane = isGasoline;
+    }
+
+    drive() { 
+        if(this.isGasoline) { 
+            this.isGasoline = false;
+        } else { 
+            console.log('Only Gasoline car allowed')
+        }
+    }
+
+}
+
+// creating instances of each class
+
+let Car = new Car(Hyundia Sonata, 2020, white);
+let Type = new Type(Toyota Camry, 2017, black, ['Sedan, SE Sedan']);
+let Fuel = new Fuel(Ford Edge, 2018, sliver, true);
+
+
+//log each instance
+
+console.log(Car);
+console.log(Type);
+console.log(Fuel);
+
+
+// call the method from parents
+
+Car.color();
+Type.color();
+Fuel.color();
+
+// log object after calling .color()
+
+console.log(Car);
+console.log(Type);
+console.log(Fuel);
+
+// call .drive()
+
+Fuel.drive();
+
+// to check .drive() when isGasoline == true 
+
+console.log(Fuel);
+
+// to check .drive() when isGasoline == false
+
+Fuel.drive();
